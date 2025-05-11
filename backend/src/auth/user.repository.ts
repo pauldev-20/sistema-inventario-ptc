@@ -11,8 +11,8 @@ export class UserRepository {
       where: { name },
     });
   }
-  
-  async createUser({data}: { data: Prisma.UserCreateInput }): Promise<User> {
+
+  async createUser({ data }: { data: Prisma.UserCreateInput }): Promise<User> {
     return await this.client.user.create({ data });
   }
 }

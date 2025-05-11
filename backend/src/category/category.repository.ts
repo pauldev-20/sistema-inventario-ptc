@@ -1,13 +1,12 @@
-import { PrismaService } from "@/prisma/prisma.service";
-import { Injectable } from "@nestjs/common";
-import { Category, Prisma } from "@prisma/client";
-
+import { PrismaService } from '@/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { Category, Prisma } from '@prisma/client';
 
 @Injectable()
 export class CategoryRepository {
   constructor(private client: PrismaService) {}
 
-  async getCategories(): Promise<Category[]> {  
+  async getCategories(): Promise<Category[]> {
     return await this.client.category.findMany();
   }
 
@@ -16,12 +15,22 @@ export class CategoryRepository {
       where: { id },
     });
   }
-  
-  async createCategory({data}: { data: Prisma.CategoryCreateInput }): Promise<Category> {
+
+  async createCategory({
+    data,
+  }: {
+    data: Prisma.CategoryCreateInput;
+  }): Promise<Category> {
     return await this.client.category.create({ data });
   }
 
-  async updateCategory({ id, data }: { id: number; data: Prisma.CategoryUpdateInput }): Promise<Category> {
+  async updateCategory({
+    id,
+    data,
+  }: {
+    id: number;
+    data: Prisma.CategoryUpdateInput;
+  }): Promise<Category> {
     return await this.client.category.update({
       where: { id },
       data,
@@ -30,7 +39,7 @@ export class CategoryRepository {
 
   async deleteCategory({ id }: { id: number }): Promise<Category> {
     return await this.client.category.delete({
-        where: { id },
+      where: { id },
     });
   }
 }

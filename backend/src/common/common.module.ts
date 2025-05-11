@@ -5,7 +5,7 @@ import { PrismaModule } from '@/prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
-  providers: [ IsUniqueValidator, ExistsValidator],
+  providers: [IsUniqueValidator, ExistsValidator],
   exports: [IsUniqueValidator, ExistsValidator],
 })
 export class CommonModule {}

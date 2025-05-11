@@ -1,7 +1,6 @@
-import { PrismaService } from "@/prisma/prisma.service";
-import { Injectable } from "@nestjs/common";
-import { Prisma, Product } from "@prisma/client";
-
+import { PrismaService } from '@/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { Prisma, Product } from '@prisma/client';
 
 @Injectable()
 export class ProductRepository {
@@ -11,14 +10,14 @@ export class ProductRepository {
     page = 1,
     perPage = 10,
     orderBy = {
-      "createdAt": "desc",
-    }
+      createdAt: 'desc',
+    },
   }: {
     page?: number;
     perPage?: number;
     orderBy?: {
       [key: string]: Prisma.SortOrder;
-    }
+    };
   }): Promise<[number, Product[]]> {
     const total = await this.client.product.count();
 
@@ -42,22 +41,35 @@ export class ProductRepository {
       },
     });
   }
-  
-  async createProduct({data}: { data: Prisma.ProductCreateInput }): Promise<Product> {
-    return await this.client.product.create({ data, include: { category: true } });
+
+  async createProduct({
+    data,
+  }: {
+    data: Prisma.ProductCreateInput;
+  }): Promise<Product> {
+    return await this.client.product.create({
+      data,
+      include: { category: true },
+    });
   }
 
-  async updateProduct({ id, data }: { id: number; data: Prisma.ProductUpdateInput }): Promise<Product> {
+  async updateProduct({
+    id,
+    data,
+  }: {
+    id: number;
+    data: Prisma.ProductUpdateInput;
+  }): Promise<Product> {
     return await this.client.product.update({
       where: { id },
       data,
-      include: { category: true }
+      include: { category: true },
     });
   }
 
   async deleteProduct({ id }: { id: number }): Promise<Product> {
     return await this.client.product.delete({
-        where: { id },
+      where: { id },
     });
   }
 }

@@ -8,6 +8,6 @@ import { StorageModule } from '@/storage/storage.module';
 @Module({
   imports: [PrismaModule, StorageModule],
   controllers: [ProductController],
-  providers: [ProductRepository, ProductService]
+  providers: [ProductRepository, ProductService],
 })
 export class ProductModule {}

@@ -6,7 +6,14 @@ import { ProductModule } from './product/product.module';
 import { CommonModule } from './common/common.module';
 import { StorageModule } from './storage/storage.module';
 @Module({
-  imports: [PrismaModule, AuthModule, CategoryModule, ProductModule, CommonModule, StorageModule],
+  imports: [
+    PrismaModule,
+    AuthModule,
+    CategoryModule,
+    ProductModule,
+    CommonModule,
+    StorageModule,
+  ],
   controllers: [],
   providers: [],
 })

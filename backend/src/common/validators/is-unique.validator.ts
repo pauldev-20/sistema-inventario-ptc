@@ -18,7 +18,7 @@ export class IsUniqueValidator implements ValidatorConstraintInterface {
 
   async validate(value: any, args: ValidationArguments): Promise<boolean> {
     const [model, field] = args.constraints;
-    
+
     const where = { [field]: value };
     const record = await (this.client as any)[model].findFirst({ where });
     return !record;

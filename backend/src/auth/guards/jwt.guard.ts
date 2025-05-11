@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  CanActivate,
-  ExecutionContext
-} from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { NotAuthorizationError } from '@/common/exceptions/not-authorization.error';
 import { verifyAccessToken } from '../utils';
 
@@ -19,15 +15,15 @@ export class JwtGuard implements CanActivate {
     }
 
     const token = authHeader.split(' ')[1];
-    
+
     try {
-        const payload = verifyAccessToken({ token });
-        if (!payload) {
-            throw new NotAuthorizationError('Token inválido');
-        }
-        req.user = payload;
-        return true;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const payload = verifyAccessToken({ token });
+      if (!payload) {
+        throw new NotAuthorizationError('Token inválido');
+      }
+      req.user = payload;
+      return true;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       throw new NotAuthorizationError('Token inválido');
     }

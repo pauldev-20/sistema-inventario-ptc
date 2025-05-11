@@ -8,45 +8,45 @@ import { JwtGuard } from './guards/jwt.guard';
 
 @Controller('auth')
 export class AuthController {
-    constructor(
-        private readonly authService: AuthService
-    ) {}
+  constructor(private readonly authService: AuthService) {}
 
-    @Post('register')
-    async registerUser(@Body() registerUserDto: RegisterUserDto) {
-        const { user, token, expiration } = await this.authService.registerUser(registerUserDto);
-        return new SuccessResponse(
-            {
-                user: UserResource.make(user),
-                token,
-                expiration,
-            },
-            HttpStatus.CREATED,
-            'Usuario registrado con éxito',
-        )
-    }
+  @Post('register')
+  async registerUser(@Body() registerUserDto: RegisterUserDto) {
+    const { user, token, expiration } =
+      await this.authService.registerUser(registerUserDto);
+    return new SuccessResponse(
+      {
+        user: UserResource.make(user),
+        token,
+        expiration,
+      },
+      HttpStatus.CREATED,
+      'Usuario registrado con éxito',
+    );
+  }
 
-    @Post('login')
-    async loginUser(@Body() loginUserDto: LoginUserDto) {
-        const { user, token, expiration } = await this.authService.loginUser(loginUserDto);
-        return new SuccessResponse(
-            {
-                user: UserResource.make(user),
-                token,
-                expiration,
-            },
-            HttpStatus.OK,
-            'Usuario logueado con éxito',
-        )
-    }
+  @Post('login')
+  async loginUser(@Body() loginUserDto: LoginUserDto) {
+    const { user, token, expiration } =
+      await this.authService.loginUser(loginUserDto);
+    return new SuccessResponse(
+      {
+        user: UserResource.make(user),
+        token,
+        expiration,
+      },
+      HttpStatus.OK,
+      'Usuario logueado con éxito',
+    );
+  }
 
-    @UseGuards(JwtGuard)
-    @Post('logout')
-    logoutUser() {
-        return new SuccessResponse(
-            {},
-            HttpStatus.OK,
-            'Usuario deslogueado con éxito',
-        )
-    }
+  @UseGuards(JwtGuard)
+  @Post('logout')
+  logoutUser() {
+    return new SuccessResponse(
+      {},
+      HttpStatus.OK,
+      'Usuario deslogueado con éxito',
+    );
+  }
 }

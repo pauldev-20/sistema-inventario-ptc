@@ -4,15 +4,21 @@ type Meta = {
   lastPage: number;
   perPage: number;
   total: number;
-}
+};
 export class SuccessResponse {
   success: boolean;
   message?: string;
   code: number;
   data: any;
-  meta? : Meta
+  meta?: Meta;
 
-  constructor(data: any, code = 200, message?: string, success = true, meta?: Meta ) {
+  constructor(
+    data: any,
+    code = 200,
+    message?: string,
+    success = true,
+    meta?: Meta,
+  ) {
     this.success = success;
     this.code = code;
     this.message = message;

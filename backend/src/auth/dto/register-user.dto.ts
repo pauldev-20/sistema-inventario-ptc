@@ -1,5 +1,5 @@
-import { IsUnique } from "@/common/validators/is-unique.validator";
-import { IsString, MaxLength, MinLength } from "class-validator";
+import { IsUnique } from '@/common/validators/is-unique.validator';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 
 export class RegisterUserDto {
   @IsString()
