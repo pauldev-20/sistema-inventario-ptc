@@ -55,7 +55,7 @@ Diseñar una base de datos relacional con las siguientes tablas:
 ---
 
 ## 🌟 Puntos Extra (Integración con AWS)
-- [⚠️] Implementar uso de EC2.
+- [⚠️] Implementar uso de EC2. (Se use App Service de Azure)
 - [⚠️] Usar S3 para almacenamiento. (Se uso una alternativa como R2 de Cloudflare)
 - [ ] Usar SES para envíos de correo.
 - [⚠️] Usar RDS como base de datos. (Se uso una alternativa como NeonConsole)
