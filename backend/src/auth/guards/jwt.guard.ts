@@ -21,7 +21,7 @@ export class JwtGuard implements CanActivate {
       if (!payload) {
         throw new NotAuthorizationError('Token inválido');
       }
-      req.user = payload;
+      req.userId = payload.sub;
       return true;
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {

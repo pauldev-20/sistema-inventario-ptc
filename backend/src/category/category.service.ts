@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { CategoryRepository } from './category.repository';
@@ -35,6 +35,11 @@ export class CategoryService {
     const exitsCategory = await this.categoryRepository.getCategory({ id });
     if (!exitsCategory) {
       throw new NotFoundException(`Categoria no encontrada`);
+    }
+    // Validar si la categoria tiene productos asociados
+    const hasProducts = await this.categoryRepository.hasProducts({ id });
+    if (hasProducts) {
+      throw new UnauthorizedException(`No se puede eliminar la categoria porque tiene productos asociados`);
     }
     const category = await this.categoryRepository.deleteCategory({ id });
     return {

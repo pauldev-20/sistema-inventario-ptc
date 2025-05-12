@@ -59,3 +59,7 @@ Diseñar una base de datos relacional con las siguientes tablas:
 - [✅] Usar S3 para almacenamiento.
 - [ ] Usar SES para envíos de correo.
 - [ ] Usar RDS como base de datos.
+
+## 🚀 Posibles mejores
+- Añadir un refresh token.
+- Personalizar los errores por defecto como el 404 y el 401 

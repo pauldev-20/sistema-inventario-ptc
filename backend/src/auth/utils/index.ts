@@ -1,4 +1,3 @@
-import { NotAuthorizationError } from '@/common/exceptions/not-authorization.error';
 import { config } from '@/config';
 import { sign, decode, verify } from 'jsonwebtoken';
 
@@ -33,14 +32,6 @@ const getToken = ({ userId, type }: { userId: number; type: TypeToken }) => {
     token,
     expiration: (decode(token) as JWT).exp * 1000,
   };
-};
-
-export const verifyToken = ({ token }: { token: string }) => {
-  return verify(token, publicKey, { algorithms: ['RS256'] }, (err) => {
-    if (err) {
-      throw new NotAuthorizationError('Token inválido');
-    }
-  });
 };
 
 export const verifyAccessToken = ({ token }: { token: string }) => {

@@ -37,6 +37,13 @@ export class CategoryRepository {
     });
   }
 
+  async hasProducts({ id }: { id: number }): Promise<boolean> {
+    const count = await this.client.product.count({
+      where: { categoryId: id },
+    });
+    return count > 0;
+  }
+
   async deleteCategory({ id }: { id: number }): Promise<Category> {
     return await this.client.category.delete({
       where: { id },

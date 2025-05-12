@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { SuccessResponse } from '@/common/utils/success-response';
@@ -37,6 +37,17 @@ export class AuthController {
       },
       HttpStatus.OK,
       'Usuario logueado con éxito',
+    );
+  }
+
+  @UseGuards(JwtGuard)
+  @Get('/profile')
+  async getUserProfile(@Request() req: any) {
+    const user = await this.authService.getUserProfile({id: Number(req.userId) });
+    return new SuccessResponse(
+      UserResource.make(user),
+      HttpStatus.OK,
+      'Usuario obtenido con éxito',
     );
   }
 

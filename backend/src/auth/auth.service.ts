@@ -10,6 +10,17 @@ import { NotAuthorizationError } from '@/common/exceptions/not-authorization.err
 export class AuthService {
   constructor(private readonly userRepository: UserRepository) {}
 
+  async getUserProfile({ id }: { id: number }) {
+    const user = await this.userRepository.getUserById({ id });
+
+    if (!user) {
+      throw new NotFoundException('Usuario no encontrado');
+    }
+
+    return user;
+    
+  }
+
   async registerUser(data: RegisterUserDto) {
     const hashedPassword = await bcrypt.hash(data.password, 10);
 

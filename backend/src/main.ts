@@ -7,6 +7,15 @@ import { useContainer } from 'class-validator';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.getHttpAdapter().get('/up', (req, res) => {
+    res.status(200).json({
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      message: 'Service is running',
+    });
+  });
+  
   app.enableCors({
     origin: config.cors.origin,
     methods: config.cors.methods,
