@@ -2,9 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ProductRepository } from './product.repository';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { PaginationQueryDto } from '@/common/dto/pagination-query.dto';
 import { Multer } from 'multer';
 import { StorageService } from '@/storage/storage.service';
+import { QueryProductDto } from './dto/query-product.dto';
 
 @Injectable()
 export class ProductService {
@@ -13,12 +13,13 @@ export class ProductService {
     private readonly storageService: StorageService,
   ) {}
 
-  async getProducts(data: PaginationQueryDto) {
+  async getProducts(data: QueryProductDto) {
     const {
       page = 1,
       perPage = 10,
       orderBy = 'createdAt',
       sortOrder = 'asc',
+      categoryId = -1
     } = data;
 
     const [total, products] = await this.productRepository.getProducts({
@@ -27,6 +28,7 @@ export class ProductService {
       orderBy: {
         [orderBy]: sortOrder,
       },
+      categoryId,
     });
 
     const lastPage = Math.ceil(total / perPage);
@@ -107,7 +109,7 @@ export class ProductService {
 
     return await this.productRepository.updateProduct({
       id,
-      data: data.price ? { ...data, price: data.price * 100 } : data,
+      data: updateData,
     });
   }
 

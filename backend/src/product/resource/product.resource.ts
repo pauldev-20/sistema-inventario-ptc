@@ -1,4 +1,5 @@
 import Resource from '@/common/utils/resource';
+import { config } from '@/config';
 import { Category, Product } from '@prisma/client';
 
 interface ProductCategory extends Product {
@@ -11,7 +12,7 @@ export class ProductResource extends Resource<ProductCategory> {
       name: this.resource.name,
       description: this.resource.description,
       price: this.resource.price / 100,
-      imageUrl: this.resource.imageUrl ?? '',
+      imageUrl: this.resource.imageUrl ?? config.api.imageDefaultUrl,
       createdAt: this.resource.createdAt,
       updatedAt: this.resource.updatedAt,
       category: {

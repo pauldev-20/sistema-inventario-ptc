@@ -12,6 +12,7 @@ const {
   AWS_URL = '',
   AWS_ENDPOINT = '',
   AWS_USE_PATH_STYLE_ENDPOINT = 'true',
+  IMAGE_DEFAULT_URL = 'https://your_bucket_name.s3.amazonaws.com/products/placeholder.svg',
 } = process.env;
 
 const pKey = fs.readFileSync(PRIVATE_KEY);
@@ -27,6 +28,7 @@ export const config = {
   },
   api: {
     prefix: '/api/v1',
+    imageDefaultUrl: IMAGE_DEFAULT_URL,
   },
   auth: {
     privateKey: pKey,

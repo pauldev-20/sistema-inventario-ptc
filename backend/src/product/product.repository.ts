@@ -12,14 +12,20 @@ export class ProductRepository {
     orderBy = {
       createdAt: 'desc',
     },
+    categoryId = -1,
   }: {
     page?: number;
     perPage?: number;
     orderBy?: {
       [key: string]: Prisma.SortOrder;
     };
+    categoryId?: number;
   }): Promise<[number, Product[]]> {
-    const total = await this.client.product.count();
+    const total = await this.client.product.count({
+      where: {
+        categoryId: categoryId > 0 ? categoryId : undefined,
+      },
+    });
 
     const products = await this.client.product.findMany({
       skip: (page - 1) * perPage,
@@ -27,6 +33,9 @@ export class ProductRepository {
       orderBy,
       include: {
         category: true,
+      },
+      where: {
+        categoryId: categoryId > 0 ? categoryId : undefined
       },
     });
 

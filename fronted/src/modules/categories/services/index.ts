@@ -1,7 +1,7 @@
 import { api } from '@/modules/common/core'
 import { type ApiData } from '@/modules/common/types'
 import { type AxiosResponse } from 'axios'
-import { type CategoryCreate, type CategoryUpdate, type Category } from '..'
+import { type Category, type CategoryCreate, type CategoryUpdate } from '../types'
 
 export const getCategoriesRequest = async (): Promise<AxiosResponse<ApiData<Category[]>>> => await api.get('/categories')
 export const getCategoryRequest = async ({ id }: { id: number }): Promise<AxiosResponse<ApiData<Category>>> => await api.get(`/categories/${id}`)

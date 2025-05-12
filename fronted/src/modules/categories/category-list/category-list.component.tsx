@@ -14,11 +14,12 @@ import { Button } from '@/modules/common/components/ui/button'
 import { DataTablePagination } from '@/modules/common/components/data-table-pagination'
 import { CategoryListSkeleton } from './category-list.skeleton'
 import { Card, CardContent } from '@/modules/common/components/ui/card'
-import dayjs from 'dayjs'
 import { TooltipContainer } from '@/modules/common/components/tooltip-container.component'
 import { EditIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { CategoryCreateModal } from '../category-create-modal'
 import { CategoryUpdateModal } from '../category-update-modal'
+import { format } from 'date-fns'
+import { es } from 'date-fns/locale'
 
 export function CategoryList () {
   const { categories, isLoadingCategories, errorCategories } = useCategories()
@@ -165,7 +166,7 @@ export function CategoryList () {
                 <div className='space-y-1'>
                   <h3 className="font-medium">{row.original.name}</h3>
                   <p className="text-xs text-muted-foreground">
-                    {dayjs(row.original.createdAt).format('D [de] MMMM [del] YYYY, hh:mm A')}
+                    {format(row.original.createdAt, "dd 'de' MMMM 'del' yyyy, h:mm aaaa", { locale: es })}
                   </p>
                 </div>
                 <div className='flex justify-center gap-2'>

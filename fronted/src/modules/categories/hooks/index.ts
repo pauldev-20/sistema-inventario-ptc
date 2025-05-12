@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { type Category } from '../types'
-import { getCategoriesRequest } from '../types/services'
+import { getCategoriesRequest } from '../services'
 import { useAppDispatch } from '@/modules/common/hooks/use-redux'
 import { createCategoryAction, deleteCategoryAction, updateCategoryAction } from '../server/actions'
 import { type ApiData, type ApiError } from '@/modules/common/types'

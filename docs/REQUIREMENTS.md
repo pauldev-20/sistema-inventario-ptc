@@ -41,16 +41,16 @@ Diseñar una base de datos relacional con las siguientes tablas:
 - Next.js
 
 ### Tareas
-- [ ] Crear formulario para CRUD de categoría.
+- [✅] Crear formulario para CRUD de categoría.
 - [ ] Crear formulario para CRUD de producto.
 - [ ] Crear tabla/grid para listar productos (con paginación).
-- [ ] Validar campos en los formularios.
-- [ ] Consumir las APIs creadas para producto y categoría.
+- [✅] Validar campos en los formularios.
+- [✅] Consumir las APIs creadas para producto y categoría.
 
 ---
 
 ## 🆓 Opcional
-- [ ] Agregar mejoras creativas al diseño o funcionalidades.
+- [✅] Agregar mejoras creativas al diseño o funcionalidades.
 
 ---
 

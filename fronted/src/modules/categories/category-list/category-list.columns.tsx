@@ -3,10 +3,11 @@
 import { type ColumnDef } from '@tanstack/react-table'
 import { DataTableColumnHeader } from '@/modules/common/components/data-table-column-header.component'
 import { type Category } from '../types'
-import dayjs from 'dayjs'
 import { TooltipContainer } from '@/modules/common/components/tooltip-container.component'
 import { Button } from '@/modules/common/components/ui/button'
 import { EditIcon, TrashIcon } from 'lucide-react'
+import { format } from 'date-fns'
+import { es } from 'date-fns/locale'
 
 export const CategoryListColumns = ({ openConfirmDialog, openEditDialog }: { openConfirmDialog: ({ id }: { id: number }) => void, openEditDialog: ({ category }: { category: Category }) => void }): Array<ColumnDef<Category>> => [
   {
@@ -38,7 +39,7 @@ export const CategoryListColumns = ({ openConfirmDialog, openEditDialog }: { ope
     ),
     cell: ({ row }) => (
       <div className='text-center'>
-        {dayjs(row.original.createdAt).format('D [de] MMMM [del] YYYY, hh:mm A')}
+        {format(row.original.createdAt, "dd 'de' MMMM 'del' yyyy, h:mm aaaa", { locale: es })}
       </div>
     )
   },
@@ -49,7 +50,7 @@ export const CategoryListColumns = ({ openConfirmDialog, openEditDialog }: { ope
     ),
     cell: ({ row }) => (
       <div className='text-center'>
-        {dayjs(row.original.updatedAt).format('D [de] MMMM [del] YYYY, hh:mm A')}
+        {format(row.original.updatedAt, "dd 'de' MMMM 'del' yyyy, h:mm aaaa", { locale: es })}
       </div>
     )
   },

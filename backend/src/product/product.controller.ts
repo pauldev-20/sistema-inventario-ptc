@@ -20,10 +20,10 @@ import { SuccessResponse } from '@/common/utils/success-response';
 import { ProductResource } from './resource/product.resource';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { PaginationQueryDto } from '@/common/dto/pagination-query.dto';
 import { JwtGuard } from '@/auth/guards/jwt.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Multer } from 'multer';
+import { QueryProductDto } from './dto/query-product.dto';
 
 @Controller('products')
 export class ProductController {
@@ -31,7 +31,7 @@ export class ProductController {
 
   @UseGuards(JwtGuard)
   @Get()
-  async getProducts(@Query() paginationQueryDto: PaginationQueryDto) {
+  async getProducts(@Query() paginationQueryDto: QueryProductDto) {
     const { data, meta } =
       await this.productService.getProducts(paginationQueryDto);
     return new SuccessResponse(

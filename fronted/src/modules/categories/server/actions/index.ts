@@ -2,7 +2,7 @@
 
 import { getExcepcionPayload } from '@/modules/common/lib'
 import { type CategoryUpdate, type CategoryCreate } from '../../types'
-import { createCategoryRequest, deleteCategoryRequest, updateCategoryRequest } from '../../types/services'
+import { createCategoryRequest, deleteCategoryRequest, updateCategoryRequest } from '../../services'
 
 export async function createCategoryAction (
   { data }: { data: CategoryCreate }
