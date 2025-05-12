@@ -42,8 +42,8 @@ Diseñar una base de datos relacional con las siguientes tablas:
 
 ### Tareas
 - [✅] Crear formulario para CRUD de categoría.
-- [ ] Crear formulario para CRUD de producto.
-- [ ] Crear tabla/grid para listar productos (con paginación).
+- [✅] Crear formulario para CRUD de producto.
+- [✅] Crear tabla/grid para listar productos (con paginación).
 - [✅] Validar campos en los formularios.
 - [✅] Consumir las APIs creadas para producto y categoría.
 
@@ -55,10 +55,10 @@ Diseñar una base de datos relacional con las siguientes tablas:
 ---
 
 ## 🌟 Puntos Extra (Integración con AWS)
-- [ ] Implementar uso de EC2.
-- [✅] Usar S3 para almacenamiento.
+- [⚠️] Implementar uso de EC2.
+- [⚠️] Usar S3 para almacenamiento. (Se uso una alternativa como R2 de Cloudflare)
 - [ ] Usar SES para envíos de correo.
-- [ ] Usar RDS como base de datos.
+- [⚠️] Usar RDS como base de datos. (Se uso una alternativa como NeonConsole)
 
 ## 🚀 Posibles mejores
 - Añadir un refresh token.

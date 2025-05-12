@@ -17,20 +17,18 @@ export default async function PrivateLayout ({
   const user = await getProfile()
 
   if (!user) {
-    return <h1>Cargando...</h1>
+    return (
+      <div className="flex items-center justify-center w-full h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold">Acceso Denegado</h1>
+          <p className="mt-2 text-lg">No tienes permiso para acceder a esta página.</p>
+          <p className="mt-2 text-lg">Por favor, inicia sesión con una cuenta válida.</p>
+        </div>
+      </div>
+    )
   }
 
   return (
-  // <SidebarProvider >
-  //   <AppSideBar roles={user.roles}/>
-  //   <UserLayer user={user} />
-  //   <main className="w-full space-y-2 max-h-screen overflow-y-auto overflow-x-hidden relative">
-  //     <AppHeader name={user.name} />
-  //     <article className='px-4 py-2 w-full'>
-  //       {children}
-  //     </article>
-  //   </main>
-  // </SidebarProvider>
     <SidebarProvider>
       <AppSideBar variant="inset" />
       <UserLayer user={user} />

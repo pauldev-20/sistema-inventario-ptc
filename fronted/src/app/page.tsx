@@ -1,12 +1,13 @@
 import { AuthForm } from '@/modules/auth/auth-form'
 import { checkHealth } from '@/modules/auth/server/services'
+import { MaintenanceView } from '@/modules/common/components/maintenance-view.component'
 
 export default async function Home() {
   const health = await checkHealth()
 
   if (!health) {
     return (
-      <h1>En mantenimiento</h1>
+      <MaintenanceView />
     )
   }
   return (
